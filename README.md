@@ -39,7 +39,7 @@
 
 请先去 Release 下载发布的 zip 压缩包，并解压
 
-### Windows
+### 步骤一：设置 Windows
 
 1. 请先安装 Python
 - Windows 应用商店搜索 Python
@@ -49,23 +49,31 @@
 - 随便打开一个文件夹
 - 文件夹空白处右击
 - 在终端中打开
-- 输入命令：` pip install pywin32 pillow `
+- 输入命令：` pip install pywin32 pillow requests `
 - 等待安装完成
 
 3. 创建一个文件夹，文件夹路径中请不要包含中文
 
 4. 将下载的 ` clipboard_server.py ` 存放在刚才新建的文件夹中
 
-### Android
+### 步骤二：设置 Android
 
 1. 请在手机或平板上安装 MicroDroid
+   - 该给的权限请给够：悬浮窗、无障碍等
 
 2. MicroDroid 导入预设宏
 - 主屏幕选择「导出/导入」
 - 选择导入
-- 打开下载的 ` ClipboardServer.macro `
+- 打开下载的：
+  - ` ClipboardServer.macro ` 或 ` ClipboardServerAuto.macro `
+  - ` 自动点击插入图片.macro `
+ 
+4. 说明：
+   - ` ClipboardServer.macro ` 是半自动的，需要自己手动点一下 悬浮图标 或者 快捷操作栏 的磁贴
+   - ` ClipboardServerAuto.macro ` 是全自动的，需要电脑的 Python 应用打开监听（推荐）
+   - ` 自动点击插入图片.macro ` 是自动化插入图片，需要自己设置一下点击坐标
 
-### MicroDroid 宏自定义
+### 步骤三：MicroDroid 宏自定义
 
 - 请先打开宏，并点击宏下方的「局部变量」
    - 填写「url」为你电脑的 ip 地址（例如：192.168.0.1）
@@ -81,3 +89,28 @@
    - 这样你之后每次更换网络或 ip 地址，都会自动让你输入新的 IP 地址
   
 3. 你还可以把倒数第七行的宏运行改成自动点击，帮你在下载的图片的时候自动点击笔记软件的插入图片
+
+4. 如果你使用 ` ClipboardServerAuto.macro `
+  - 请在 MicroDroid 的设置中找到「HTTP 服务器」然后把端口号改成 5033
+
+5. 如果你使用 ` 自动点击插入图片.macro `
+   - 请在系统设置中打开开发者选项，下滑找到显示指针坐标，打开
+   - 然后去你的笔记软件里面依次记录下插入图片需要点击的坐标
+   - 去宏里面修改点击坐标
+  
+### 步骤四：开始使用
+
+1. （看情况可选）平板填上电脑 IP 地址
+2. 电脑打开 ` clipboard_server.py `
+3. 如果使用「半自动方案」，只需要设置端口号（强烈建议 5033）、用户名、密码（默认 123456）
+4. 如果使用「全自动方案」，还需要填上平板的 IP 地址，可以去设置里面找，也可以在 ` ClipboardServerAuto.macro ` 宏的触发器里面看
+5. 如果使用「全自动方案」，还需要电脑上勾选「监听并发送」
+6. 「截图反色」按需勾选
+7. 开启服务器
+8. 开始截图使用
+
+## 补充说明
+
+电脑端问题不大，主要是 MacroDroid，需要自己研究研究怎么用
+
+所以如果出现没反应，大概率是 MacroDroid 没设置好。
