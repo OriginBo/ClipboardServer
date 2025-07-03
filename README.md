@@ -1,0 +1,2 @@
+# ClipboardServer
+一个可以把电脑截图通过http请求发送给安卓手机和平板的项目
